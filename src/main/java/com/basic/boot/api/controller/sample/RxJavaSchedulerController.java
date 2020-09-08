@@ -27,16 +27,16 @@ public class RxJavaSchedulerController {
      */
     @GetMapping(value = "scmap")
     public void rxJavaMap() {
-        logger.debug("RXJAVA_MAP_STARTED");
+        logger.debug("RXJAVA_SCHEDULER_MAP_STARTED");
         String[] array = {"apple", "banana", "grape", "orange", "tomato"};
         Observable.fromArray(array)
                 //.map(lamdaMapFormatString)
-                .doOnNext(data -> logger.debug("DATA: " + data))
+                .doOnNext(data -> logger.debug("DATA : {}, THREAD : {}" ,data, Thread.currentThread().getName()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.io())
                 .map(data -> formatString(data))
-                .subscribe(logger::debug);
-        logger.debug("RXJAVA_MAP_FINISHED");
+                .subscribe(result -> logger.debug("RESULT : {}, THREAD : {}" ,result, Thread.currentThread().getName()));
+        logger.debug("RXJAVA_SCHEDULER_MAP_FINISHED");
     }
 
     /**
@@ -44,15 +44,17 @@ public class RxJavaSchedulerController {
      */
     @GetMapping(value = "scflatmap")
     public void rxJavaFlatMap() {
-        logger.debug("RXJAVA_FLATMAP_STARTED");
+        logger.debug("RXJAVA_SCHEDULER_FLATMAP_STARTED");
         String[] array = {"apple", "banana", "grape", "orange", "tomato"};
         Observable.fromArray(array)
+                .doOnNext(next -> logger.debug("DATA : {}, THREAD : {}" ,next, Thread.currentThread().getName()))
                 .flatMap(data ->
-                                Observable.just(data, data + " + @")
-                        //Observable.fromCallable(() -> formatString(data))
+                        //Observable.just(data, data + " + @")
+                        Observable.fromCallable(() -> formatString(data))
+                                .subscribeOn(Schedulers.io())
                 )
-                .subscribe(logger::debug);
-        logger.debug("RXJAVA_FLATMAP_FINISHED");
+                .subscribe(result -> logger.debug("RESULT : {}, THREAD : {}" ,result, Thread.currentThread().getName()));
+        logger.debug("RXJAVA_SCHEDULER_FLATMAP_FINISHED");
     }
 
     @GetMapping(value = "scfilter")
