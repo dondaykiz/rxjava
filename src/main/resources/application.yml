@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: local
+  mvc:
+    locale: ko_KR
+  messages:
+    basename: classpath:/messages/message
+    encoding: UTF-8
+---
+spring:
+  profiles: local
+server:
+  port: 8000
+---
+spring:
+  profiles: dev
+server:
+  port: 8001
