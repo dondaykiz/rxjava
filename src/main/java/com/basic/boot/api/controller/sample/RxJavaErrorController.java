@@ -26,7 +26,7 @@ public class RxJavaErrorController {
     /**
      * Error 핸들링 적용 flatMap()
      */
-    @GetMapping(value = "error")
+    @GetMapping(value = "erReturn")
     public void rxJavaError() {
         logger.debug("RXJAVA_ERROR_HANDLER_STARTED");
         String[] array = {"apple", "banana", "grape", "orange", "tomato"};
