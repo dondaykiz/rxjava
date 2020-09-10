@@ -4,6 +4,8 @@ import com.basic.boot.api.exception.CommonException;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.OperationContext;
 import com.microsoft.azure.storage.blob.*;
+import io.reactivex.rxjava3.core.Observable;
+import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.util.List;
 
 @Service
 public class BlobServiceImpl implements BlobService {
@@ -21,14 +24,18 @@ public class BlobServiceImpl implements BlobService {
     private static final Logger logger = LoggerFactory.getLogger(BlobServiceImpl.class);
 
     @Override
-    public String uploadBlob(String data) {
+    public void uploadBlob(Observable<String> array) {
+        logger.debug("ARRAY : " + array);
+        array.subscribe(result -> logger.debug("RESULT >>> " + result));
+
         String connString = "1DefaultEndpointsProtocol=https;AccountName=yjstorage01;AccountKey=497SIStSqXHdRD0dGM/iIqSwPz3P2WGbRjCdzBFis+t2G3NNbO04xVS+2oXV00Mpp5zCMRUxcKXOxCplvlaz6Q==;EndpointSuffix=core.windows.net";
         CloudStorageAccount storageAccount;
         CloudBlobClient blobClient = null;
         CloudBlobContainer container=null;
         File sourceFile = null;
 
-        try {
+
+        /*try {
             storageAccount = CloudStorageAccount.parse(connString);
             blobClient = storageAccount.createCloudBlobClient();
             container = blobClient.getContainerReference("yjblobtest");
@@ -49,6 +56,6 @@ public class BlobServiceImpl implements BlobService {
         } catch (Exception e) {
             e.printStackTrace();
             throw new CommonException();
-        }
+        }*/
     }
 }

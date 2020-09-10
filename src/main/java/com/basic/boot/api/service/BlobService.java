@@ -1,5 +1,10 @@
 package com.basic.boot.api.service;
 
+import io.reactivex.rxjava3.core.Observable;
+import org.json.simple.JSONArray;
+
+import java.util.List;
+
 public interface BlobService {
-    String uploadBlob(String data);
+    void uploadBlob(Observable<String> array);
 }
