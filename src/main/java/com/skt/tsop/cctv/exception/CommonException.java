@@ -1,4 +1,4 @@
-package com.basic.boot.api.exception;
+package com.skt.tsop.cctv.exception;
 
 /**
  * 예외 처리를 위한 공통 클래스.

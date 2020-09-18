@@ -1,17 +1,13 @@
-package com.basic.boot.api.controller.sample;
+package com.skt.tsop.cctv.controller;
 
-import com.basic.boot.api.exception.CommonException;
-import com.basic.boot.api.service.BlobService;
+import com.skt.tsop.cctv.service.BlobService;
 import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Random;
 
 @RestController
 public class RxJavaErrorController {

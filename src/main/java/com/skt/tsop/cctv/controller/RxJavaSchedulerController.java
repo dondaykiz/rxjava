@@ -1,6 +1,6 @@
-package com.basic.boot.api.controller.sample;
+package com.skt.tsop.cctv.controller;
 
-import com.basic.boot.api.service.BlobService;
+import com.skt.tsop.cctv.service.BlobService;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;

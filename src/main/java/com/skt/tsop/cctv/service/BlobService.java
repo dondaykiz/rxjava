@@ -1,4 +1,4 @@
-package com.basic.boot.api.service;
+package com.skt.tsop.cctv.service;
 
 import io.reactivex.rxjava3.core.Observable;
 import org.json.simple.JSONArray;

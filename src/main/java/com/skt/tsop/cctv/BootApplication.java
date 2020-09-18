@@ -1,4 +1,4 @@
-package com.basic.boot.api;
+package com.skt.tsop.cctv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,20 +1,13 @@
-package com.basic.boot.api.service;
+package com.skt.tsop.cctv.service;
 
-import com.basic.boot.api.exception.CommonException;
 import com.microsoft.azure.storage.CloudStorageAccount;
-import com.microsoft.azure.storage.OperationContext;
 import com.microsoft.azure.storage.blob.*;
 import io.reactivex.rxjava3.core.Observable;
-import org.json.simple.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.Writer;
-import java.util.List;
 
 @Service
 public class BlobServiceImpl implements BlobService {
